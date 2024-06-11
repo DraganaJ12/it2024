@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
+import User from "./User.js";
 
 const Subject = sequelize.define("Subject", {
     name: {
@@ -33,8 +34,7 @@ const Subject = sequelize.define("Subject", {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-
+    }
 });
 
 export default Subject;

@@ -1,11 +1,12 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
+import Subject from "./Subject.js";
+
 
 const Book = sequelize.define("Book", {
     date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
-        unique: true,
     },
     subjectId: {
         type: DataTypes.INTEGER,
@@ -20,6 +21,13 @@ const Book = sequelize.define("Book", {
     }
 }, {
     timestamps: true,
+    indexes: [{
+        unique: true,
+        fields: ['date', 'subjectId', 'userId', 'appointment']
+    }]
 });
+
+Book.belongsTo(Subject, { foreignKey: 'subjectId' });
+
 
 export default Book;
