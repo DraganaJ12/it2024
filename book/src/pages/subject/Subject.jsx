@@ -88,7 +88,7 @@ const Subject = () => {
               </div>
               <div className="subjectDetails">
                 <div className="subjectDetailsTexts">
-                  {freeAppointments.length > 0 && <p>Available Appointments</p>}
+                  {freeAppointments.length > 0 && <p>Slobodni termini</p>}
                   <div className="buttonRow">
                     {freeAppointments.length > 0 ? (
                       freeAppointments.map((appointment, index) => (
@@ -102,17 +102,17 @@ const Subject = () => {
                         </div>
                       ))
                     ) : (
-                      <p>No free appointments available.</p>
+                      <p>Nema slobodnih termina.</p>
                     )}
                     <input type="hidden" value={selectedAppointment} name="appointment" />
                   </div>
                 </div>
                 <div className="subjectDetailsPrice">
-                  <span>Book your perfect course today for only:</span>
+                  <span>Rezervisite svoj termin danas po cjeni:</span>
                   <h2>
                     <b>${subject.price}</b>
                   </h2>
-                  <button onClick={handleBookClick}>Reserve or Book Now!</button>
+                  <button onClick={handleBookClick}>Rezerviši</button>
                 </div>
               </div>
             </>

@@ -41,7 +41,7 @@ const Header = ({ type }) => {
         <FontAwesomeIcon icon={faSearch} className="headerIcon" />
         <input
           type="text"
-          placeholder="Type subject"
+          placeholder="Predmet"
           className="headerSearchInput"
           value={state.name}
           onChange={(e) => dispatch({ type: "NEW_SEARCH", payload: { ...state, name: e.target.value } })}
@@ -69,7 +69,7 @@ const Header = ({ type }) => {
       </div>
       <div className="headerSearchItem">
         <button className="headerBtn" onClick={handleSearch}>
-          Search
+          Pretraži
         </button>
       </div>
     </div>

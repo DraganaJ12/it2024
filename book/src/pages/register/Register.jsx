@@ -46,7 +46,7 @@ const Register = () => {
         <div className="aboutUs">
           <div className="aboutUsContent">
             <div className="lContainer">
-              <h2>Register</h2>
+              <h2>Registracija</h2>
               <input
                 type="text"
                 placeholder="Username"
@@ -96,7 +96,7 @@ const Register = () => {
                 required
               />
               <button disabled={loading} onClick={handleClick} className="lButton">
-                Register
+                Registuj se
               </button>
               {error && <span>{error.message}</span>}
             </div>

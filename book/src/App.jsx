@@ -7,7 +7,8 @@ import Home from "./pages/home/Home";
 import Subject from "./pages/subject/Subject";
 import List from "./pages/list/List";
 import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
+import Register from "./pages/register/Register"
+
 import Profile from "./pages/profile/Profile";
 
 function App() {

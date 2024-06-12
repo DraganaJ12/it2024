@@ -44,7 +44,7 @@ const Login = () => {
           <div className="aboutUsContent">
 
             <div className="lContainer">
-              <h2>Login</h2>
+              <h2>Prijava</h2>
               <input
                 type="text"
                 placeholder="username"
@@ -60,7 +60,7 @@ const Login = () => {
                 className="lInput"
               />
               <button disabled={loading} onClick={handleClick} className="lButton">
-                Login
+                Uloguj se
               </button>
               {error && <span>{error.message}</span>}
             </div>

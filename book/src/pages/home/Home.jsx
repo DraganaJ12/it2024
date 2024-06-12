@@ -13,19 +13,15 @@ const Home = () => {
         <div className="aboutUs">
           <div className="aboutUsContent">
 
-         <h1>Welcome to LearnNow</h1>
-            Discover a world of knowledge and opportunities with LearnNow! 
-            Our platform offers a wide range of courses designed to help you achieve your educational 
-            and professional goals. Whether you're looking to enhance your skills, explore a new hobby, 
-            or advance your career,
-            we have the right course for you.
-            <h1>Get Started TodayBest courses</h1>
-            Join the thousands of learners who have transformed their lives with LearnNow. Sign up today and take the first step towards a brighter future.
-
+         <h1>Dobrodošli u LearnNow</h1>
+         Otkrivanje svijeta znanja i mogućnosti sa LearnNow!
+         Naša platforma nudi širok spektar kurseva dizajniranih da vam pomognu da usavršite vaše obrazovne i profesionalne ciljeve. Bilo da želite da unaprijedite svoje veštine, istražite novi hobi ili napredujete u karijeri, imamo pravi kurs za vas.
+            <h1>Počni danas!</h1>
+            Pridružite se hiljadama učenika koji su transformisali svoje živote sa LearnNow. Prijavite se danas i napravite prvi korak ka svetlijoj budućnosti.
           </div>
           <div className="aboutUsImage"><img src="/3974104.jpg"></img></div>
         </div>
-        <h1 className="homeTitle">Best courses</h1>
+        <h1 className="homeTitle">Najbolji kursevi</h1>
         <CourseList/>
       </div>
       <Footer/>

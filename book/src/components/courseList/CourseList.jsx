@@ -3,11 +3,11 @@ import "./courseList.css";
 
 const CourseList = () => {
   const data = [
-    { type: "Design", count: 10 },
-    { type: "Development", count: 15 },
+    { type: "Dizajn", count: 10 },
+    { type: "Divelopment", count: 15 },
     { type: "Marketing", count: 8 },
-    { type: "IT&Software", count: 20 },
-    { type: "Music", count: 5 },
+    { type: "IT&Softveri", count: 20 },
+    { type: "Muzika", count: 5 },
   ];
 
   const images = [

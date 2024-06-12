@@ -44,7 +44,7 @@ const Profile = () => {
                 {loading ? (
                     "loading"
                 ) : error ? (
-                    <p>Error: {error.message}</p>
+                    <p>Greška: {error.message}</p>
                 ) : (
                     <>
                         {data.map((item) => (
@@ -57,9 +57,9 @@ const Profile = () => {
                                 <div className="siDetails">
                                     <div className="siDetailTexts">
                                         <span className="siPrice">${item.Subject.price}</span>
-                                        <span className="siTaxOp">Includes taxes and fees</span>
+                                        <span className="siTaxOp">Uključujući PDV</span>
                                         <Link to={`/subjects/${item.Subject.id}`}>
-                                            <button className="siCheckButton">See availability</button>
+                                            <button className="siCheckButton">Dostupnost</button>
                                         </Link>
                                     </div>
                                 </div>

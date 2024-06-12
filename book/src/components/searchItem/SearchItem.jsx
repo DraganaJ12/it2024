@@ -21,9 +21,9 @@ const SearchItem = ({ item }) => {
         </div>}
         <div className="siDetailTexts">
           <span className="siPrice">${item.price}</span>
-          <span className="siTaxOp">Includes taxes and fees</span>
+          <span className="siTaxOp">Uključujući PDV</span>
           <Link to={`/subjects/${item.id}`}>
-          <button className="siCheckButton">See availability</button>
+          <button className="siCheckButton">Dostupnost</button>
           </Link>
         </div>
       </div>
