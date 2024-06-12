@@ -5,7 +5,17 @@ import { Op } from "sequelize";
 
 
 export const addSubject = async(req, res, next) => {
-    const newSubject = new Subject(req.body);
+    // Convert comma-separated strings to JSON arrays
+    const { appointment, photos, ...otherFields } = req.body;
+
+    const formattedAppointment = appointment ? appointment.split(',') : [];
+    const formattedPhotos = photos ? photos.split(',') : [];
+
+    const newSubject = new Subject({
+        ...otherFields,
+        appointment: formattedAppointment,
+        photos: formattedPhotos,
+    });
 
     try {
         const savedSubject = await newSubject.save();
