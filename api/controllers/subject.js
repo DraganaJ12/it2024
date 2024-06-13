@@ -25,7 +25,7 @@ export const addSubject = async(req, res, next) => {
     }
 };
 
-export const getSubjects = async(req, res, next) => {
+export const getSubjects = async (req, res, next) => {
     const { min = 1, max = 999, limit, ...others } = req.query;
     try {
         const subjects = await Subject.findAll({
@@ -34,13 +34,37 @@ export const getSubjects = async(req, res, next) => {
             },
             limit: parseInt(limit) || undefined,
         });
-        res.status(200).json(subjects);
+
+        // Transform the photos and appointment fields to be JSON parsed
+        const transformedSubjects = subjects.map(subject => {
+            // Ensure photos is parsed as JSON
+            if (subject.photos && typeof subject.photos === 'string') {
+                try {
+                    subject.photos = JSON.parse(subject.photos);
+                } catch (error) {
+                    console.error('Error parsing photos field:', error);
+                }
+            }
+            // Ensure appointment is parsed as JSON
+            if (subject.appointment && typeof subject.appointment === 'string') {
+                try {
+                    subject.appointment = JSON.parse(subject.appointment);
+                } catch (error) {
+                    console.error('Error parsing appointment field:', error);
+                }
+            }
+            return subject;
+        });
+
+        res.status(200).json(transformedSubjects);
     } catch (err) {
         next(err);
     }
 };
 
-export const getSubject = async(req, res, next) => {
+
+
+export const getSubject = async (req, res, next) => {
     try {
         const subject = await Subject.findByPk(req.params.id);
 
@@ -57,7 +81,6 @@ export const getSubject = async(req, res, next) => {
 
         console.log("Start Date:", startDate);
         console.log("End Date:", endDate);
-        //formatira se date da bi se poklopio sa formatom u bazi
 
         const books = await Book.findAll({
             where: {
@@ -69,13 +92,31 @@ export const getSubject = async(req, res, next) => {
             limit: parseInt(req.query.limit) || undefined,
         });
 
-        //izvuku se slobodni appointments
-        console.log('Books found:', books);
+        // Parse photos and appointments fields
         let freeAppointments = subject.appointment;
+        let photos = subject.photos;
+
         console.log('Initial appointments:', freeAppointments);
-        if (!Array.isArray(freeAppointments)) {
-            freeAppointments = [];
+        console.log('Initial photos:', photos);
+
+        if (typeof freeAppointments === 'string') {
+            try {
+                freeAppointments = JSON.parse(freeAppointments);
+            } catch (error) {
+                console.error('Error parsing appointment field:', error);
+                freeAppointments = [];
+            }
         }
+
+        if (typeof photos === 'string') {
+            try {
+                photos = JSON.parse(photos);
+            } catch (error) {
+                console.error('Error parsing photos field:', error);
+                photos = [];
+            }
+        }
+
         if (books && date) {
             books.forEach(book => {
                 freeAppointments = freeAppointments.filter(appt => appt !== book.appointment);
@@ -85,8 +126,11 @@ export const getSubject = async(req, res, next) => {
         console.log('Filtered appointments:', freeAppointments);
 
         const response = {
-            subject,
-            freeAppointments
+            subject: {
+                ...subject.toJSON(),
+                photos,
+            },
+            freeAppointments: freeAppointments
         };
 
         res.status(200).json(response);

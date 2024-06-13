@@ -47,7 +47,7 @@ const Subject = () => {
     try {
       const response = await axios.post('http://localhost:8800/api/book/', body);
       console.log('Booking successful:', response.data);
-      alert('Booking successful!');
+      alert('Uspješno ste rezervisali termin');
       window.location.reload(); // Osvežava stranicu
     } catch (error) {
       console.error('Error booking appointment:', error);
